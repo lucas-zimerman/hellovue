@@ -23,10 +23,25 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import * as Sentry from '@sentry/capacitor'
+import * as SentryVue from '@sentry/vue'
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
   
+    Sentry.init(
+      {
+        app: app,
+        dsn: `https://4079af8b316240ea9453eb0a23b715cc@o447951.ingest.sentry.io/5522756`,
+        release: `myapp@${process.env.npm_package_version}`,
+        dist: '1',
+        tracesSampleRate: 0.1,
+        debug: true
+      },
+      SentryVue.init
+    );
+
 router.isReady().then(() => {
   app.mount('#app');
 });

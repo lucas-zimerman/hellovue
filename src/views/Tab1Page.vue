@@ -13,6 +13,7 @@
       </ion-header>
     
       <ExploreContainer name="Tab 1 page" />
+      <ion-button @click='captureMessage'>Capture Message</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -21,9 +22,17 @@
 import { defineComponent } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import * as Sentry from '@sentry/capacitor'
 
 export default  defineComponent({
   name: 'Tab1Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+    methods: {
+    captureMessage() {
+      console.log('capturing message');
+      Sentry.captureException('Hola Mundo' + Math.random());
+    }
+    }
+
 });
 </script>

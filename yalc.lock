@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "@sentry/capacitor": {
+      "signature": "be4e56c75d4b5a482ec5bba6d0801091",
+      "file": true
+    }
+  }
+}
